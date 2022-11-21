@@ -10,8 +10,8 @@ from nltk.tokenize import sent_tokenize
 import nltk
 nltk.download('punkt')
 
-model_output_dir = "../models/model_sample"
-data_path = "../dataset/dataset_sample/"
+model_output_dir = "../models/t5_large_data/"
+data_path = "../dataset/dataset_large/"
 # begin_checkpoint = "facebook/bart-base"
 begin_checkpoint = "t5-base"
 train_epochs = 8
