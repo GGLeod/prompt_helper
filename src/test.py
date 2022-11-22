@@ -1,8 +1,8 @@
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-output_dir = "../models/bart_small_data/epoch2"
-model = AutoModelForSeq2SeqLM.from_pretrained(output_dir)
-tokenizer = AutoTokenizer.from_pretrained(output_dir)
+model_dir = "../models/bart_small_data/epoch2"
+model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
+tokenizer = AutoTokenizer.from_pretrained(model_dir)
 
 raw_inputs = ["god, holy"]
 inputs = tokenizer(raw_inputs, padding=True, truncation=True, return_tensors="pt")

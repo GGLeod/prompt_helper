@@ -8,6 +8,7 @@ from transformers import DataCollatorForSeq2Seq
 from transformers import AutoModelForSeq2SeqLM
 from nltk.tokenize import sent_tokenize
 import nltk
+import sys
 nltk.download('punkt')
 
 model_output_dir = "../models/t5_large_data/"
@@ -123,4 +124,9 @@ def train_one_epoch(model_checkpoint, output_dir, epoch, dataset):
 
 
 if __name__ == '__main__':
+    if len(sys.argv) == 2:
+        if sys.argv[1] == "sample":
+            model_output_dir = "../models/t5_sample_data/"
+            data_path = "../dataset/dataset_sample/"
+            train_epochs = 2
     main()

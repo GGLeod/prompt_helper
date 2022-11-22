@@ -3,6 +3,7 @@ import os
 import re
 import csv
 import random
+import sys
 
 version = "large_text_only"    # 2m_text_only (some bug exists) or large_text_only
 output_dir = "../dataset/dataset_large/"
@@ -91,4 +92,11 @@ def main():
 
 
 if __name__ == '__main__':
+    if len(sys.argv) == 2:
+        if sys.argv[1] == "sample":
+            output_dir = "../dataset/dataset_sample/"
+            end = 1000  # -1 means process all
+            train_file = output_dir + "train.csv"
+            validation_file = output_dir + "validation.csv"
+            test_file = output_dir + "test.csv"
     main()
