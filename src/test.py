@@ -1,10 +1,12 @@
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
+# model_dir = "../models/t5_part_data/epoch3"
 model_dir = "../models/bart_small_data/epoch2"
+
 model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
 tokenizer = AutoTokenizer.from_pretrained(model_dir)
 
-raw_inputs = ["god, holy"]
+raw_inputs = ["a mountain with yellow leaves"]
 inputs = tokenizer(raw_inputs, padding=True, truncation=True, return_tensors="pt")
 
 outputs = model.generate(inputs["input_ids"])

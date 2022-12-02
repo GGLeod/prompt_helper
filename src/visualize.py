@@ -64,7 +64,7 @@ def get_distribution(array):
     dis = np.zeros(100)
     for element in array:
         dis[int(element * 10)] += 1
-    return dis
+    return normalize(dis, 0, 1)
 
 def normalize(arr, t_min, t_max):
     norm_arr = []
@@ -83,9 +83,9 @@ def get_cdf(array):
 begin = 50
 end = 90
 xarray = np.arange(0, 10, 0.1)
-plt.plot(xarray[begin:end], get_cdf(raw_scores)[begin:end], label="raw")
-plt.plot(xarray[begin:end], get_cdf(human_scores)[begin:end], label="human")
-plt.plot(xarray[begin:end], get_cdf(model_scores)[begin:end], label="model")
+plt.plot(xarray[begin:end], get_distribution(raw_scores)[begin:end], label="raw")
+plt.plot(xarray[begin:end], get_distribution(human_scores)[begin:end], label="human")
+plt.plot(xarray[begin:end], get_distribution(model_scores)[begin:end], label="model")
 plt.xlabel("aesthetic score")
 plt.ylabel("cumulative distribution")
 plt.legend(loc="upper left")

@@ -69,12 +69,12 @@ def train_one_epoch(model_checkpoint, output_dir, epoch, dataset):
     # preprocess dataset
     def preprocess_function(examples):
         model_inputs = tokenizer(
-            examples["description"],
+            examples["input"],
             max_length=max_input_length,
             truncation=True,
         )
         labels = tokenizer(
-            examples["original_prompt"], max_length=max_target_length, truncation=True
+            examples["output"], max_length=max_target_length, truncation=True
         )
         model_inputs["labels"] = labels["input_ids"]
         model_inputs["labels_mask"] = labels["attention_mask"]
@@ -119,7 +119,7 @@ def train_one_epoch(model_checkpoint, output_dir, epoch, dataset):
 
     trainer.train()
     trainer.save_model(output_dir)
-    with open(output_dir + "eval_epoch_"+str(epoch)+".txt", "w") as file1:
+    with open(model_output_dir + "eval_epoch_"+str(epoch)+".txt", "w") as file1:
         file1.write(str(trainer.evaluate()))
 
 
